@@ -4,6 +4,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import Logoimg from '../img/logo.png'
 import { mobile } from '../responsive';
+import { Link } from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -69,7 +70,11 @@ const Navbars = styled.div`
    
    
 `
-const NavItem = styled.nav`
+const NavItem = styled(Link)`
+text-decoration:none;
+color:#000;
+font-weight: 600;
+margin-right: 10px;
     ${mobile({display:"none"})}
    
 `
@@ -81,7 +86,9 @@ const Navbar = () => {
             <Wrapper>
             <Left>
                 <Navbars>
-                    <NavItem link to="#">Products</NavItem>
+                    <NavItem to="/">Home</NavItem>
+                    <NavItem to="/ProductList">Products</NavItem>
+                    <NavItem to="/SingleProduct">SinglePage</NavItem>
                     
                 </Navbars>
                 <SerachContainer>
@@ -97,11 +104,11 @@ const Navbar = () => {
                     </Logo>
             </Center>
             <Right>
-            <MenuItem>REGISTER</MenuItem>
-                <MenuItem>SIGN IN</MenuItem>
+            <MenuItem><NavItem to="/Register">REGISTER</NavItem></MenuItem>
+                <MenuItem><NavItem to="/Register">SIGN IN</NavItem></MenuItem>
                 <MenuItem>
                 <Badge badgeContent={4} color="primary">
-                        <ShoppingCartOutlined />
+                      <NavItem to="/Cart"> <ShoppingCartOutlined /></NavItem>
                  </Badge>
                 </MenuItem>
             </Right>
